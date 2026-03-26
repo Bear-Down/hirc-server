@@ -62,7 +62,8 @@
 	<div id="test-results"></div>
 
 	<script>
-		const baseUrl = 'https://hirc-server-a3deh6hud4fnfjdh.canadacentral-01.azurewebsites.net/';
+		// const baseUrl = 'https://hirc-server-a3deh6hud4fnfjdh.canadacentral-01.azurewebsites.net/';
+		const baseUrl = window.location.origin;
 		const resultsContainer = document.getElementById('test-results');
 
 		const logResult = (endpoint, status, data, isError = false) => {
