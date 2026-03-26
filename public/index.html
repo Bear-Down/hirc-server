@@ -171,7 +171,7 @@
 				const data = await res.json();
 
 				document.getElementById('riskResult').innerHTML =
-					`Risk Level: ${data.riskLevel}`;
+					`Risk Level: ${data.risk}`;
 
 				logResult('/api/risk-category', res.status, data, !res.ok);
 

@@ -3,17 +3,14 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const port = process.env.PORT || 3000;
+
 app.use(cors())
 app.use(express.json())
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// app.get("/", (req, res) => {
-//     // res.send("Server side for Health Insurance Caclulator")
-//     res.sendFile(path.join(__dirname, "./public/index.html"))
-// })
-
-
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public/index.html"));
+});
 
 // 1. Ping API (...)
 app.get("/ping", (req, res) => {
@@ -121,5 +118,5 @@ app.post("/api/risk-category", (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Server listening at port${port}`)
+    console.log(`Server listening at port ${port}`)
 })
