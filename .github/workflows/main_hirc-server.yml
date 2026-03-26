@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: backend/
+          path: backend/ # Ensure index.html is moved inside backend/public/
 
   deploy:
     runs-on: ubuntu-latest
