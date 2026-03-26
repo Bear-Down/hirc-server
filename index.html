@@ -19,7 +19,7 @@
 	<h1>Health Insurance Calculator API Test</h1>
 	<p>Target: <code>https://hirc-server-a3deh6hud4fnfjdh.canadacentral-01.azurewebsites.net/</code></p>
 	<p>API response are listed below API Logs</p>
-	
+
 	<!-- BP -->
 	<div class="test-section">
 		<h3>Blood Pressure Category</h3>
@@ -27,7 +27,6 @@
 		Diastolic: <input type="number" id="bpDiastolic" value="95">
 		<button onclick="testBpCategory()">Calculate</button>
 
-		<!-- <div id="bpResult" class="result-box"></div> -->
 	</div>
 
 	<!-- BMI -->
@@ -111,9 +110,6 @@
 
 				const data = await res.json();
 
-				document.getElementById('bpResult').innerHTML =
-					`Category: ${data.category}`;
-
 				logResult('/api/bp-category', res.status, data, !res.ok);
 
 			} catch (err) {
@@ -135,9 +131,6 @@
 				});
 
 				const data = await res.json();
-
-				document.getElementById('bmiResult').innerHTML =
-					`BMI: ${data.bmi} (${data.category})`;
 
 				logResult('/api/bmi', res.status, data, !res.ok);
 
@@ -171,9 +164,6 @@
 				});
 
 				const data = await res.json();
-
-				document.getElementById('riskResult').innerHTML =
-					`Risk Level: ${data.risk}`;
 
 				logResult('/api/risk-category', res.status, data, !res.ok);
 
