@@ -12,11 +12,11 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// 1. Ping API (...)
+// 1. Ping API (Edward Rodriguez)
 app.get("/ping", (req, res) => {
-    console.log("Ping recevied")
-    res.json("Server is up and running")
-})
+    console.log("Ping request received by server");
+    res.json("Server is up and running");
+});
 
 
 
