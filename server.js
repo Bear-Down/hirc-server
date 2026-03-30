@@ -21,27 +21,18 @@ app.get("/ping", (req, res) => {
 
 
 // 2. BP-Category API (...)
-app.post("/api/bp-category", (req, res) => {
-    const { systolic, diastolic } = req.body;
+const { systolic, diastolic } = req.body;
 
-    let category = "";
+let category =
+    (systolic > 180 || diastolic > 120) ? "crisis" :
+    (systolic >= 140 || diastolic >= 90) ? "stage 2" :
+    (systolic >= 130 || diastolic >= 80) ? "stage 1" :
+    (systolic >= 120 && diastolic < 80) ? "elevated" :
+    "normal";
 
-    if (systolic > 180 || diastolic > 120) {
-        category = "crisis";
-    } else if (systolic >= 140 || diastolic >= 90) {
-        category = "stage 2";
-    } else if (systolic >= 130 || diastolic >= 80) {
-        category = "stage 1";
-    } else if (systolic >= 120 && diastolic < 80) {
-        category = "elevated";
-    } else {
-        category = "normal";
-    }
+console.log("Computed blood pressure category:", category);
 
-    console.log("BP Category calculated:", category);
-
-    res.json({ category });
-});
+res.json({ category });
 
 // 3. BMI API (...)
 app.post("/api/bmi", (req, res) => {
