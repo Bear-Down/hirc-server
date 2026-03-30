@@ -47,21 +47,17 @@ app.post("/api/bp-category", (req, res) => {
 app.post("/api/bmi", (req, res) => {
     const { heightFeet, heightInches, weightPounds } = req.body;
 
-    const totalInches = (heightFeet * 12) + heightInches;
-    const heightMeters = totalInches * 0.0254;
-    const weightKg = weightPounds * 0.453592;
+    const totalInches = heightFeet * 12 + heightInches;
+    const bmi = (weightPounds * 0.453592) / ((totalInches * 0.0254) ** 2);
 
-    const bmi = weightKg / (heightMeters ** 2);
+    let category =
+        (bmi < 18.5) ? "underweight" :
+        (bmi < 25) ? "normal" :
+        (bmi < 30) ? "overweight" :
+        (bmi < 35) ? "obese" :
+        "extreme obesity";
 
-    let category = "";
-
-    if (bmi < 18.5) category = "underweight";
-    else if (bmi < 25) category = "normal";
-    else if (bmi < 30) category = "overweight";
-    else if (bmi < 35) category = "obese";
-    else category = "extreme obesity";
-
-    console.log("BMI calculated:", bmi, category);
+    console.log("Calculated BMI value and category:", bmi, category);
 
     res.json({
         bmi: bmi.toFixed(2),
