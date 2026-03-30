@@ -22,7 +22,13 @@ app.get("/ping", (req, res) => {
 
 // 2. BP-Category API (...)
 app.post("/api/bp-category", (req, res) => {
-    const { systolic, diastolic } = req.body;
+    // Safety check: ensure body exists to prevent 500 crash
+    if (!req.body) {
+        return res.status(400).json({ error: "No data provided" });
+    }
+
+    const systolic = parseInt(req.body.systolic);
+    const diastolic = parseInt(req.body.diastolic);
 
     let category = "";
 
@@ -69,7 +75,7 @@ app.post("/api/bmi", (req, res) => {
     });
 });
 
-// 4. Risk Category API (...)
+// 4. Risk Category API (Kevin Dacanay, Erick Hernandez)
 app.post("/api/risk-category", (req, res) => {
     const { age, bmiCategory, bpCategory, familyHistory } = req.body;
 
@@ -98,7 +104,7 @@ app.post("/api/risk-category", (req, res) => {
     // Family History
     if (familyHistory.includes("diabetes")) score += 10;
     if (familyHistory.includes("cancer")) score += 10;
-    if (familyHistory.includes("alzheimer")) score += 10;
+    if (familyHistory.includes("alzheimers")) score += 10;
 
     // Risk Category
     let risk = "";
