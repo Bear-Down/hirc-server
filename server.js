@@ -20,7 +20,7 @@ app.get("/ping", (req, res) => {
 
 
 
-// 2. BP-Category API (...)
+// 2. BP-Category API (Kaleb Richardson)
 app.post("/api/bp-category", (req, res) => {
     // Safety check: ensure body exists to prevent 500 crash
     if (!req.body) {
@@ -49,7 +49,7 @@ app.post("/api/bp-category", (req, res) => {
     res.json({ category });
 });
 
-// 3. BMI API (...)
+// 3. BMI API (Sebastian Jaculbe)
 app.post("/api/bmi", (req, res) => {
     const { heightFeet, heightInches, weightPounds } = req.body;
 
