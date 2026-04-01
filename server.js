@@ -1,3 +1,10 @@
+/*
+    Creators: Kevin Dacanay, Erick Hernandez, Sebastian Jaculbe,
+              Kaleb Richardson, Edward Rodriguez,
+    Created: March 24th, 2026
+    Updated: March 31st, 2026
+    Version 1.0
+*/
 const path = require('path')
 const express = require('express')
 const cors = require('cors')
@@ -117,7 +124,6 @@ app.post("/api/risk-category", (req, res) => {
         risk
     });
 });
-
 
 app.listen(port, () => {
     console.log(`Server listening at port ${port}`)
